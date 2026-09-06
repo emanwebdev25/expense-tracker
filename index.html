@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Expense Tracker</h1>
+        <p>Keep track of where your money goes.</p>
+    </header>
+    <main>
+        <section class="summary">
+            <div>
+                <h2>Total Balance</h2>
+                <p class="balance" id="total-balance">Rs.0</p>
+            </div>
+            <div>
+                <h2>Total Income</h2>
+                <p class="income" id="total-income">Rs.0</p>
+            </div>
+            <div>
+                <h2>Total Expenses</h2>
+                <p class="expense" id="total-expenses">Rs.0</p>
+            </div>
+        </section>
+        <section class="expense-form">
+            <h2>Add Expense</h2>
+            <form id="expense-form">
+                <label for="name">Expense Name</label>
+                <input type="text" name="Name" id="name" required>
+
+                <label for="amount">Amount</label>
+                <input type="number" name="amount" id="amount" required>
+
+                <label for="category">Category</label>
+                <select name="category" id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="bills">Bills</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="date">Date</label>
+                <input type="date" name="Date" id="date" required>
+
+                <button type="submit">Add Expense</button>
+            </form>
+        </section>
+        <section class="expense-form">
+            <h2>Add Income</h2>
+            <form id="income-form">
+                <label for="income-source">Income Source</label>
+                <input type="text" name="income-source" id="income-source" required>
+
+                <label for="income-amount">Amount</label>
+                <input type="number" name="income-amount" id="income-amount" required>
+
+                <label for="income-date">Date</label>
+                <input type="date" name="income-date" id="income-date" required>
+
+                <button type="submit">Add Income</button>
+            </form>
+        </section>
+        <section class="expense-section">
+            <h2>Your Expenses</h2>
+            <input class="search-input" type="text" placeholder="Search expenses...">
+            <select class="filter-select">
+                <option value="all">All Categories</option>
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="shopping">Shopping</option>
+                <option value="bills">Bills</option>
+                <option value="other">Other</option>
+            </select>
+            <div id="expense-list">
+
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>© 2026 Expense Tracker. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
