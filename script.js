@@ -834,7 +834,7 @@ editForm.addEventListener("submit", function (event) {
         return;
     }
 
-    if (incomes.includes(editingTransaction)) {
+    if (editingTransaction.source !== undefined) {
 
         editingTransaction.source = editName.value;
         editingTransaction.amount = editAmount.value;
