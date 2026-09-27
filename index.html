@@ -14,32 +14,206 @@
         <p>Keep track of where your money goes.</p>
     </header>
     <main>
+        <section class="dashboard-header">
+            <div>
+                <p class="eyebrow">FINANCIAL OVERVIEW</p>
+                <h2>Welcome to your dashboard</h2>
+                <p>Keep your spending organized and stay in control.</p>
+            </div>
+
+            <button id="theme-toggle" type="button">🌙 Dark Mode</button>
+        </section>
+
         <section class="summary">
-            <div>
-                <h2>Total Balance</h2>
-                <p class="balance" id="total-balance">Rs.0</p>
+            <div class="summary-card balance-card">
+                <p>Total Balance</p>
+                <h2 id="total-balance">Rs. 0</h2>
+                <span>Available balance</span>
             </div>
-            <div>
-                <h2>Total Income</h2>
-                <p class="income" id="total-income">Rs.0</p>
+
+            <div class="summary-card income-card">
+                <p>Total Income</p>
+                <h2 id="total-income">Rs. 0</h2>
+                <span>Total money received</span>
             </div>
-            <div>
-                <h2>Total Expenses</h2>
-                <p class="expense" id="total-expenses">Rs.0</p>
+
+            <div class="summary-card expense-card">
+                <p>Total Expenses</p>
+                <h2 id="total-expenses">Rs. 0</h2>
+                <span>Total money spent</span>
+            </div>
+
+            <div class="summary-card monthly-card">
+                <p>This Month</p>
+                <h2 id="monthly-expenses">Rs. 0</h2>
+                <span>Monthly spending</span>
             </div>
         </section>
-        <section class="expense-form">
-            <h2>Add Expense</h2>
-            <form id="expense-form">
-                <label for="name">Expense Name</label>
-                <input type="text" name="Name" id="name" required>
 
-                <label for="amount">Amount</label>
-                <input type="number" name="amount" id="amount" required>
+        <section class="dashboard-grid">
+            <section class="expense-form">
+                <div class="section-heading">
+                    <p class="eyebrow">TRANSACTION</p>
+                    <h2>Add Expense</h2>
+                </div>
 
-                <label for="category">Category</label>
-                <select name="category" id="category" required>
-                    <option value="">Select Category</option>
+                <form id="expense-form">
+                    <label for="name">Expense Name</label>
+                    <input type="text" name="Name" id="name" placeholder="e.g. Groceries" required>
+
+                    <label for="amount">Amount</label>
+                    <input type="number" name="amount" id="amount" placeholder="Enter amount" min="1" required>
+
+                    <label for="category">Category</label>
+                    <select name="category" id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="food">Food</option>
+                        <option value="transport">Transport</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="bills">Bills</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="date">Date</label>
+                    <input type="date" name="Date" id="date" required>
+
+                    <button type="submit">Add Expense</button>
+                </form>
+            </section>
+
+            <section class="expense-form">
+                <div class="section-heading">
+                    <p class="eyebrow">INCOME</p>
+                    <h2>Add Income</h2>
+                </div>
+
+                <form id="income-form">
+                    <label for="income-source">Income Source</label>
+                    <input type="text" name="income-source" id="income-source" placeholder="e.g. Salary" required>
+
+                    <label for="income-amount">Amount</label>
+                    <input type="number" name="income-amount" id="income-amount" placeholder="Enter amount" min="1"
+                        required>
+
+                    <label for="income-date">Date</label>
+                    <input type="date" name="income-date" id="income-date" required>
+
+                    <button type="submit">Add Income</button>
+                </form>
+            </section>
+        </section>
+
+        <section class="analytics-grid">
+            <div class="analytics-card">
+                <div class="section-heading">
+                    <p class="eyebrow">ANALYTICS</p>
+                    <h2>Spending Overview</h2>
+                </div>
+
+                <div id="spending-overview">
+                    <p>No spending data yet.</p>
+                </div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="section-heading">
+                    <p class="eyebrow">CATEGORIES</p>
+                    <h2>Where Your Money Goes</h2>
+                </div>
+
+                <div id="category-breakdown">
+                    <p>No category data yet.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="budget-section">
+            <div class="budget-header">
+                <div>
+                    <p class="eyebrow">MONTHLY PLAN</p>
+                    <h2>Monthly Budget</h2>
+                    <p>Set a spending limit and keep an eye on your progress.</p>
+                </div>
+
+                <div class="budget-input">
+                    <label for="budget">Budget</label>
+                    <input type="number" id="budget" min="1" placeholder="Rs. 50,000">
+                    <button id="save-budget" type="button">Save Budget</button>
+                </div>
+            </div>
+
+            <div class="budget-progress">
+                <div class="budget-progress-bar">
+                    <div id="budget-progress"></div>
+                </div>
+
+                <div class="budget-info">
+                    <span id="budget-spent">Rs. 0 spent</span>
+                    <span id="budget-remaining">Rs. 0 remaining</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="expense-section">
+            <div class="transactions-header">
+                <div>
+                    <p class="eyebrow">TRANSACTIONS</p>
+                    <h2>Your Transactions</h2>
+                    <p>Search and manage your recent activity.</p>
+                    <p id="transaction-count">0 transactions</p>
+                </div>
+
+                <div class="transaction-actions">
+                    <button id="export-btn" type="button">Export CSV</button>
+                    <button id="clear-all-btn" type="button">Clear All</button>
+                </div>
+            </div>
+
+            <div class="transaction-controls">
+                <input class="search-input" type="search" placeholder="Search transactions..."
+                    aria-label="Search transactions">
+
+                <select class="filter-select" aria-label="Filter transactions by category">
+                    <option value="all">All Categories</option>
+                    <option value="income">Income</option>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="bills">Bills</option>
+                    <option value="other">Other</option>
+                </select>
+                <select id="type-filter" aria-label="Filter transactions by type">
+                    <option value="all">All Types</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+                <select id="sort-select" aria-label="Sort transactions">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="highest">Highest Amount</option>
+                    <option value="lowest">Lowest Amount</option>
+                </select>
+            </div>
+
+            <div id="expense-list"></div>
+        </section>
+    </main>
+    <div id="edit-modal" class="edit-modal">
+        <div class="edit-modal-content">
+            <button id="close-modal" type="button">×</button>
+
+            <p class="eyebrow">EDIT TRANSACTION</p>
+            <h2>Edit Transaction</h2>
+
+            <form id="edit-form">
+                <label for="edit-name">Name</label>
+                <input type="text" id="edit-name" required>
+
+                <label for="edit-amount">Amount</label>
+                <input type="number" id="edit-amount" min="1" required>
+
+                <label for="edit-category">Category</label>
+                <select id="edit-category">
                     <option value="food">Food</option>
                     <option value="transport">Transport</option>
                     <option value="shopping">Shopping</option>
@@ -47,43 +221,13 @@
                     <option value="other">Other</option>
                 </select>
 
-                <label for="date">Date</label>
-                <input type="date" name="Date" id="date" required>
+                <label for="edit-date">Date</label>
+                <input type="date" id="edit-date" required>
 
-                <button type="submit">Add Expense</button>
+                <button type="submit">Save Changes</button>
             </form>
-        </section>
-        <section class="expense-form">
-            <h2>Add Income</h2>
-            <form id="income-form">
-                <label for="income-source">Income Source</label>
-                <input type="text" name="income-source" id="income-source" required>
-
-                <label for="income-amount">Amount</label>
-                <input type="number" name="income-amount" id="income-amount" required>
-
-                <label for="income-date">Date</label>
-                <input type="date" name="income-date" id="income-date" required>
-
-                <button type="submit">Add Income</button>
-            </form>
-        </section>
-        <section class="expense-section">
-            <h2>Your Expenses</h2>
-            <input class="search-input" type="text" placeholder="Search expenses...">
-            <select class="filter-select">
-                <option value="all">All Categories</option>
-                <option value="food">Food</option>
-                <option value="transport">Transport</option>
-                <option value="shopping">Shopping</option>
-                <option value="bills">Bills</option>
-                <option value="other">Other</option>
-            </select>
-            <div id="expense-list">
-
-            </div>
-        </section>
-    </main>
+        </div>
+    </div>
     <footer class="footer">
         <p>© 2026 Expense Tracker. All rights reserved.</p>
     </footer>
